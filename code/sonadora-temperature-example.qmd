@@ -79,8 +79,8 @@ sonadora_sum <- sonadora_clean |>
 
 # base layer: ggplot
 ggplot(data = sonadora_sum, 
-       aes(x = elevation_m,
-           y = mean_temp_c)) +
+       aes(x = elevation_m, # x-axis: elevation in meters
+           y = mean_temp_c)) + # y-axis mean temperature in Celsius 
   # first layer: points representing temperature at each elevation
   geom_point()
 
@@ -91,10 +91,10 @@ ggplot(data = sonadora_sum,
 ```{r}
 #| label: temperature-model
 
-# model
+# model the data
 temperature_model <- lm(
   mean_temp_c ~ elevation_m, # formula: response ~ predictor
-  data = sonadora_sum # data frame
+  data = sonadora_sum # data frame: sonadora sum data
   )
 
 ```
@@ -105,8 +105,8 @@ temperature_model <- lm(
 #| label: temperature-diagnostics
 
 # diagnostics
-par(mfrow = c(2, 2))
-plot(temperature_model)
+par(mfrow = c(2, 2)) # displays plot in a 2x2 grid
+plot(temperature_model) # display diagnostic plots
 
 ```
 
@@ -114,7 +114,7 @@ plot(temperature_model)
 
 ```{r}
 #| label: temperature-model-summary
-
+# more information about the model
 summary(temperature_model)
 
 ```
